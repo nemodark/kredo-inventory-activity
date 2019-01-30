@@ -20,3 +20,5 @@ login -> select category -> select items -> purchase items
 
 -> check delivery status
 -> check user purchase history
+
+test
