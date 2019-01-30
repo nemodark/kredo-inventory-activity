@@ -2,7 +2,7 @@ Inventory System
 
 users - user_id, username, email, password, firstname, lastname, permission(admin, user)
 
-category - category_id, category_name
+categories - category_id, category_name
 
 items - item_id, category_id, item_name, item_price, item_quantity, item_status(available, soldout)
 
