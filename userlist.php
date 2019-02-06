@@ -1,4 +1,6 @@
-<?php include 'User.php'; ?>
+<?php 
+include 'User.php';
+include 'Category.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 

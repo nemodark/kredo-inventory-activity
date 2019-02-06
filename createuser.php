@@ -28,7 +28,7 @@
 
     <!-- content -->
     <div class="container">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control" id="username">
@@ -49,6 +49,10 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" class="form-control" id="email">
             </div>
+            <div class="form-group">
+                <label>Photo</label>
+                <input type="file" name="profilepic">
+            </div>
             <input type="submit" name="submit" value="Save" class="btn btn-primary btn-block">
         </form>
 
@@ -61,9 +65,14 @@
                 $lastname = $_POST['lastname'];
                 $email = $_POST['email'];
 
+                //file upload
+                $target_dir = "images/";
+                $target_file = $target_dir . basename($_FILES['profilepic']['name']);
+                $tmp_name = $_FILES['profilepic']['tmp_name'];
+                
                 $user = new User;
 
-                echo $user->insert($username, $password, $firstname, $lastname, $email);
+                echo $user->insert($username, $password, $firstname, $lastname, $email, $target_dir, $target_file, $tmp_name);
             }
         ?>
     </div>
