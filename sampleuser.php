@@ -1,3 +1,16 @@
+<?php
+require_once "User.php";
+require_once "Course.php";
+session_start();
+$login_id = $_SESSION['login_id'];
+
+$user = new User;
+
+$courses = new Course;
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,22 +24,24 @@
   </head>
   <body>
       
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation"></button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto">
-                </ul>
-                <ul class='navbar-nav'>
-                    
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
+
+        <h1>Personal Info</h1>
+        <?php
+            $userinfo = $user->get_user($login_id);
+            
+        ?>
+
+        <h1>Courses</h1>
+        <?php
+            $user_id = $userinfo['user_id'];
+
+            $result = $courses->get_user_courses($user_id);
+
+            foreach($result as $row){
+                $row['course_name'];
+            }
+
+        ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -49,11 +49,13 @@ include 'Category.php'; ?>
                     if($result){
                         foreach($result as $row){
                             $user_id = $row['user_id'];
+                            $picture = $row['itemPicture'];
                             echo "<tr>";
                             echo "<td>" .$row['user_id']. "</td>";
                             echo "<td>" .$row['username']. "</td>";
                             echo "<td>" .$row['firstname']." ".$row['lastname']. "</td>";
                             echo "<td>" .$row['email']. "</td>";
+                            echo "<td><img class='img-fluid' src='$picture' width='30'></td>";
                             echo "<td><a class='btn btn-info' href='edituser.php?id=$user_id'>Edit</a> <a href='#' class='btn btn-danger'>Delete</a></td>";
                             echo "</tr>";
                         }

@@ -22,9 +22,10 @@ class User extends Database
         }
     }
     //Select one value from the table using id
-    public function get_user($id = 1)
+    public function get_user($login_id = 1)
     {
-        $sql = "SELECT * FROM users WHERE user_id=$id";
+        $sql = "SELECT * FROM users WHERE login_id = $login_id";
+
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -47,17 +48,18 @@ class User extends Database
 
             if (move_uploaded_file($tmp_name, $target_file)) {
 
-                $sql = "INSERT INTO users(username, password, firstname, lastname, email, status, picture) VALUES('$username', '$password', '$firstname', '$lastname', '$email', 1, '$target_file')";
+                $sql = "INSERT INTO users(username, password, firstname, lastname, email, status, itemPicture) VALUES('$username', '$password', '$firstname', '$lastname', '$email', 1, '$target_file')";
                 $result = $this->conn->query($sql);
-
-                if ($result) {
-                    header("Location: userlist.php");
-                } else {
-                    echo $this->conn->error;
-                }
-
             } else {
+
+                $loginID = $this->conn->insert_id;
+
                 echo "Error uploading file";
+            }
+            if ($result) {
+                header("Location: userlist.php");
+            } else {
+                echo $this->conn->error;
             }
         }
     }
